@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+  rails5:
+    build:
+      context: rails5
+      dockerfile: ../base.dockerfile
+    command: ['rails', 's']
+    ports:
+      - 13000:3000
+    volumes:
+      - ./rails5:/app
+      - ./app:/app/app
+      - type: bind
+        source: ./db/migrate
+        target: /app/db/migrate
+        read_only: true
+      - type: bind
+        source: ./db/seeds.rb
+        target: /app/db/seeds.rb
+        read_only: true
+      - ./spec:/app/spec
+    tmpfs:
+      - /app/tmp/pids
+
+  rails6:
+    build:
+      context: rails6
+      dockerfile: ../base.dockerfile
+    command: ['rails', 's']
+    ports:
+      - 13001:3000
+    volumes:
+      - ./rails6:/app
+      - ./app:/app/app
+      - type: bind
+        source: ./db/migrate
+        target: /app/db/migrate
+        read_only: true
+      - type: bind
+        source: ./db/seeds.rb
+        target: /app/db/seeds.rb
+        read_only: true
+      - ./spec:/app/spec
+    tmpfs:
+      - /app/tmp/pids
