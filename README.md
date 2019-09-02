@@ -1,6 +1,6 @@
 # rails6-scoping-bug-reproducer
 
-## Setup
+## How to use
 
 In the project directory where you cloned this repository at, execute followings:
 
