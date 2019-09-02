@@ -5,7 +5,7 @@ RSpec.describe Category, type: :model do
     let(:categories) { Category.where.not(id: 1).scoping { Category.all } }
     context 'the size of categories' do
       subject { categories.size }
-      it { is_expected.to eq 2 }
+      it { is_expected.to eq 5 }
     end
   end
 end

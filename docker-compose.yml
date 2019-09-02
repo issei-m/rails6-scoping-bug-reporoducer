@@ -11,6 +11,7 @@ services:
     volumes:
       - ./rails5:/app
       - ./app:/app/app
+      - /app/tmp
       - type: bind
         source: ./db/migrate
         target: /app/db/migrate
@@ -19,7 +20,10 @@ services:
         source: ./db/seeds.rb
         target: /app/db/seeds.rb
         read_only: true
-      - ./spec:/app/spec
+      - type: bind
+        source: ./spec
+        target: /app/spec
+        read_only: true
     tmpfs:
       - /app/tmp/pids
 
@@ -33,6 +37,7 @@ services:
     volumes:
       - ./rails6:/app
       - ./app:/app/app
+      - /app/tmp
       - type: bind
         source: ./db/migrate
         target: /app/db/migrate
@@ -41,6 +46,9 @@ services:
         source: ./db/seeds.rb
         target: /app/db/seeds.rb
         read_only: true
-      - ./spec:/app/spec
+      - type: bind
+        source: ./spec
+        target: /app/spec
+        read_only: true
     tmpfs:
       - /app/tmp/pids

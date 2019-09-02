@@ -6,4 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Category.create!(name: "Root 1", children: [ Category.new(name: "Child 1-1"), Category.new(name: "Child 2-2") ])
+Category.delete_all
+Category.create!(id: 1, name: "Root 1", children: [ Category.new(id: 3, name: "Child 1-1"), Category.new(id: 4, name: "Child 2-2") ])
+Category.create!(id: 2, name: "Root 1", children: [ Category.new(id: 5, name: "Child 1-1"), Category.new(id: 6, name: "Child 2-2") ])
